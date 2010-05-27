@@ -16,7 +16,9 @@ This version features customizable button disabling when you're at the first and
 
 ## Examples
 
-Available at http://dev.victorstanciu.ro/prototype/carousel/
+Original examples available at http://dev.victorstanciu.ro/prototype/carousel/. 
+
+A simplified example is also included in the `example` folder.
 
 ## Requirements
 
@@ -24,11 +26,11 @@ Carousel.js needs both the Prototype JavaScript framework and the Script.aculo.u
 
 ## Usage
 
-* Download carousel.js or carousel-min.js
+* Download carousel.js
 * Include the script in your page, after the Prototype and Script.aculo.us libraries:
 	
 	<script type="text/javascript" src="prototype.js"></script>
-	<script type="text/javascript" src="scriptaculous.js"></script>
+	<script type="text/javascript" src="effects.js"></script>
 	<script type="text/javascript" src="carousel.js"></script>
 
 ### Markup
@@ -81,7 +83,7 @@ There are two categories of elements that trigger the carousel's movement: the o
 
 	<a href="javascript:" class="carousel-jumper" rel="slide-1">Jump to slide 1</a>
 
-Will jump to the slide that has the id "slide-1". And:
+Will jump to the slide that has the `id` "slide-1". And:
 
 	<a href="javascript:" class="carousel-control" rel="prev">Previous slide</a>
 
@@ -95,7 +97,7 @@ You can use multiple carousels on the same page. Simply give each carousel its o
 	
 	new Carousel('carousel-2', $$('#carousel-2-content .slide'), $$('#carousel-2-content a.carousel-control', '#carousel-2-content a.carousel-jumper'));
 	
-A common mistake is to only use `a.carousel-control` in the initializers, which causes any one control to change all the slides on the page. (Of course, if that's your goal go ahead and do that.)
+A common mistake is to only use `a.carousel-control` in the initializers, which causes any one control to change all the slides on the page. (Of course, if that's your goal go ahead and do that.).
 
 ## Available Options
 
