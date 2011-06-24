@@ -102,10 +102,28 @@ Carousel = Class.create(Abstract, {
 		event.stop();
     },
 
+  toggleJumpers: function (slide) {
+
+    buttons = $$('.'+this.options.jumperClassName)
+    
+    selectedClassName = this.options.selectedClassName;
+    
+    buttons.each(function (button) {
+      if (button.rel == slide.id) {
+        button.addClassName(selectedClassName);
+      } else {
+        button.removeClassName(selectedClassName);
+      }
+    });
+    
+  },
+
 	moveTo: function (element) {
     if (this.options.beforeMove && (typeof this.options.beforeMove == 'function')) {
 			this.options.beforeMove();
     }
+
+	this.toggleJumpers(element);
 
 		this.previous = this.current ? this.current : this.slides[0];
 		this.current  = $(element);
