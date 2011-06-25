@@ -68,7 +68,11 @@ Carousel = Class.create(Abstract, {
         this.start();
     }
 		if (this.options.initial) {
-			var initialIndex = this.slides.indexOf($(this.options.initial));
+			if (this.options.initial == 'last') {
+				var initialIndex = this.slides.length - 1;
+			      } else {
+				var initialIndex = this.slides.indexOf($(this.options.initial));
+			      }
 			if (initialIndex > (this.options.visibleSlides - 1) && this.options.visibleSlides > 1) {               
 				if (initialIndex > this.slides.length - (this.options.visibleSlides + 1)) {
 					initialIndex = this.slides.length - this.options.visibleSlides;
