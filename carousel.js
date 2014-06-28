@@ -68,7 +68,11 @@ Carousel = Class.create(Abstract, {
         this.start();
     }
 		if (this.options.initial) {
-			var initialIndex = this.slides.indexOf($(this.options.initial));
+			if (this.options.initial == 'last') {
+				var initialIndex = this.slides.length - 1;
+			      } else {
+				var initialIndex = this.slides.indexOf($(this.options.initial));
+			      }
 			if (initialIndex > (this.options.visibleSlides - 1) && this.options.visibleSlides > 1) {               
 				if (initialIndex > this.slides.length - (this.options.visibleSlides + 1)) {
 					initialIndex = this.slides.length - this.options.visibleSlides;
@@ -102,10 +106,28 @@ Carousel = Class.create(Abstract, {
 		event.stop();
     },
 
+  toggleJumpers: function (slide) {
+
+    buttons = $$('.'+this.options.jumperClassName)
+    
+    selectedClassName = this.options.selectedClassName;
+    
+    buttons.each(function (button) {
+      if (button.rel == slide.id) {
+        button.addClassName(selectedClassName);
+      } else {
+        button.removeClassName(selectedClassName);
+      }
+    });
+    
+  },
+
 	moveTo: function (element) {
     if (this.options.beforeMove && (typeof this.options.beforeMove == 'function')) {
 			this.options.beforeMove();
     }
+
+	this.toggleJumpers(element);
 
 		this.previous = this.current ? this.current : this.slides[0];
 		this.current  = $(element);
